@@ -1,0 +1,40 @@
+# Minimum Skew Problem
+# Find a position in a genome minimizing the skew.
+
+# Given: A DNA string Genome.
+
+# Return: All integer(s) i minimizing Skew(Prefixi (Text)) over all values of i (from 0 to |Genome|).
+
+
+def MinimumSkew(Genome):
+    # 최소 Skew를 저장할 리스트를 만든다.
+    # 최소 Skew를 저장할 변수를 만든다.
+    # skew 변수를 시작점 0 값으로 정의한다.
+    MinimumSkew = 0
+    MinSkew = []
+    Skew = 0
+
+    # 주어진 Genome 문자열 첫번째부터 끝까지 for문 반복
+    for i in range (len(Genome)):
+
+    # Skew에 추후 계산할 연산들을 계속 업데이트 한다.
+    # G일 경우 +1
+    # C일 경우 -1
+    # 그 외는 아무것도 skew 값에 업데이트 하지 않는다.
+        if Genome[i] == 'G':
+            Skew += 1
+        elif Genome[i] == 'C':
+            Skew -+ 1
+        else: quit
+        
+    # MinimumSkew를 업데이트 한다. 계산이 끝난 Skew와 이전의 MinimumSkew를 비교하여 Skew가 값이 작다면 MinimumSkew 리스트를 비우고 새로 저장한다. 값이 같다면 리스트에 추가해준다.
+        if Skew < MinimumSkew:
+            MinimumSkew = Skew
+            MinSkew.clear()
+            MinSkew.append(i)
+        elif Skew == MinimumSkew:
+            MinSkew.append(i)
+    return MinSkew
+
+Genome = 'CCTATCGGTGGATTAGCATGTCCCTGTACGTTTCGCCGCGAACTAGTTCACACGGCTTGATGGCAAATGGTTTTTCCGGCGACCGTAATCGTCCACCGAG'
+MinimumSkew(Genome)
